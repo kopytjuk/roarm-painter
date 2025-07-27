@@ -11,7 +11,7 @@ def test_forward_kinematics_simple():
     theta_list = np.zeros(5)
     M = rk.end_effector_zero_config
 
-    T_ee = rk.end_effector_pose_from_joints(theta_list)
+    T_ee = rk.forward_kinematics(theta_list)
 
     np.testing.assert_almost_equal(T_ee, M)
 
@@ -27,7 +27,7 @@ def test_forward_kinematics_arm_straight():
     M = rk.end_effector_zero_config
     R0 = M[:3, :3]
 
-    T_ee = rk.end_effector_pose_from_joints(theta_list)
+    T_ee = rk.forward_kinematics(theta_list)
     R_ee = T_ee[:3, :3]
 
     np.testing.assert_almost_equal(R_ee, R0)
